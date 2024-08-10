@@ -1,14 +1,12 @@
 FROM tensorflow/serving:latest
 
-<<<<<<< HEAD
-COPY ./output/serving_model/models/cc-model
+COPY ./output/serving_model_dir /models/review-model
 COPY ./config /model_config
-=======
-COPY ./output/serving_model /models/review-model
->>>>>>> f745380abe23a0d48fcb3e2531564867a56824ca
 
 ENV MODEL_NAME=review-model
 
+ENV MONITORING_CONFIG="/model_config/prometheus.config"
+ENV PORT=8501
 
 RUN echo '#!/bin/bash \n\n\
 env \n\
